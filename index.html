@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>ООО «Сибспецмаш» — Металлоконструкции</title>
+    
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <div class="container">
+        <!-- Логотип (если есть) -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="logo.png" alt="Логотип Сибспецмаш" width="150" class="me-2">
+            <span></span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#services">Услуги</a></li>
+                <li class="nav-item"><a class="nav-link" href="#catalog">Каталог</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Контакты</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="bg-primary text-white text-center py-5 mt-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Металлоконструкции от ООО «Сибспецмаш»</h1>
+        <p class="lead mt-3">Производство и монтаж металлических конструкций любой сложности</p>
+        <a href="#contact" class="btn btn-light btn-lg mt-4">Оставить заявку</a>
+    </div>
+</section>
+
+<!-- Services -->
+<section id="services" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Наши Услуги</h2>
+        <div class="row g-4">
+            <div class="col-md-4 text-center">
+                <i class="bi bi-diagram-3 display-4 text-primary mb-3"></i>
+                <h5>Проектирование</h5>
+                <p>Разработка чертежей и документации согласно техническим условиям.</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <i class="bi bi-tools display-4 text-primary mb-3"></i>
+                <h5>Производство</h5>
+                <p>Изготовление конструкций на современных станках с высокой точностью.</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <i class="bi bi-building display-4 text-primary mb-3"></i>
+                <h5>Монтаж</h5>
+                <p>Быстрая и качественная установка на объекте заказчика.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Catalog -->
+<section id="catalog" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Каталог Продукции</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100 product-card"
+                     data-bs-toggle="modal"
+                     data-bs-target="#productModal"
+                     data-name="Ферма F-2023"
+                     data-desc="Профильная ферма из стали S345. Высота 2 м, длина до 12 м."
+                     data-image="ferma.jpg">
+                    <img src="ferma.jpg" class="card-img-top" alt="Ферма">
+                    <div class="card-body">
+                        <h5 class="card-title">Ферма F-2023</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100 product-card"
+                     data-bs-toggle="modal"
+                     data-bs-target="#productModal"
+                     data-name="Колонна K-98"
+                     data-desc="Круглая опорная колонна диаметром 300 мм, высота до 10 м."
+                     data-image="kolonny.jpg">
+                    <img src="kolonny.jpg" class="card-img-top" alt="Колонна">
+                    <div class="card-body">
+                        <h5 class="card-title">Колонна K-98</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100 product-card"
+                     data-bs-toggle="modal"
+                     data-bs-target="#productModal"
+                     data-name="Двутавровая балка B-75"
+                     data-desc="Двутавровая балка из стали марки С345, стандарт длина 12 м."
+                     data-image="balok.jpg">
+                    <img src="balok.jpg" class="card-img-top" alt="Балка">
+                    <div class="card-body">
+                        <h5 class="card-title">Двутавровая балка B-75</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Свяжитесь с ООО «Сибспецмаш»</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form action="#" method="POST">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Имя</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Телефон</label>
+                        <input type="tel" class="form-control" id="phone" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Сообщение</label>
+                        <textarea class="form-control" id="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Отправить заявку</button>
+                </form>
+                <p class="mt-4 text-center">
+                    📞 Телефон: +7 (908) 649-60-90<br>
+                    📍 Адрес: г. Ангарск, ул. Промышленная, д. 45
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Map -->
+<iframe 
+    src="https://yandex.ru/map-widget/v1/?um=constructor%3A1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7&source=constructor" 
+    width="100%" height="300" frameborder="0"></iframe>
+
+<!-- Footer -->
+<footer class="bg-light text-center py-4">
+    <div class="container">
+        <p class="mb-0">&copy; 2025 ООО «Сибспецмаш». Все права защищены.</p>
+    </div>
+</footer>
+
+<!-- Modal -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Продукт</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img id="modalImage" src="" class="img-fluid mb-3" alt="Продукт">
+        <p id="modalDescription" class="lead"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>
