@@ -118,7 +118,7 @@
             <h5 class="card-title">Двутавровая балка B-75</h5>
             <p class="price-tag">Цена: 12 700 руб.</p>
             <p class="stock-info">В наличии: 40 шт.</p>
-            <button class="btn btn-primary w-100">Заказать</button>
+            <button class="btn btn-primary w-100">Подробнее</button>
           </div>
         </div>
       </div>
@@ -186,13 +186,13 @@
       const name = card.dataset.name;
       const description = card.dataset.desc;
       const price = card.dataset.price;
-      const stock = card.dataset.stock;
+      
       const image = card.dataset.image;
 
       document.getElementById('modalName').textContent = name;
       document.getElementById('modalDescription').textContent = description;
       document.getElementById('modalPrice').textContent = `Цена: ${price} руб.`;
-      document.getElementById('modalStock').textContent = `В наличии: ${stock} шт.`;
+      
       document.getElementById('modalImage').src = image;
     });
   });
