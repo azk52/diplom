@@ -125,20 +125,12 @@
         <h2 class="text-center mb-5">Свяжитесь с ООО «Сибспецмаш»</h2>
         <div class="row justify-content-center">
             <div class="col-md-8">
-               <form id="contactForm" action="send.php" method="POST">
-  <div class="mb-3">
-    <label for="name" class="form-label">Имя</label>
-    <input type="text" class="form-control" id="name" name="name" required>
-  </div>
-  <div class="mb-3">
-    <label for="phone" class="form-label">Телефон</label>
-    <input type="tel" class="form-control" id="phone" name="phone" required>
-  </div>
-  <div class="mb-3">
-    <label for="message" class="form-label">Сообщение</label>
-    <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary w-100">Отправить заявку</button>
+               <form action="https://formspree.io/f/mzzrgyon" method="POST">
+<input type="hidden" name="_next" value="https://ваш_сайт/success.html">
+  <input type="text" name="name" placeholder="Имя" required>
+  <input type="tel" name="phone" placeholder="Телефон" required>
+  <textarea name="message" placeholder="Сообщение" required></textarea>
+  <button type="submit">Отправить</button>
 </form>
                 <p class="mt-4 text-center">
                     📞 Телефон: +7 (908) 649-60-90<br>
