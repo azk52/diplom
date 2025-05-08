@@ -12,7 +12,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   fclose($file);
 
   // Перенаправьте на главную страницу
-  header('Location: /index.html');
-  exit;
-}
-?>
+  header('Location: index.html');
+  exit;}?>
