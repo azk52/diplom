@@ -10,3 +10,49 @@ body {
     transform: translateY(-5px);
     transition: all 0.3s ease-in-out;
 }
+/* === Гарантии === */
+.guarantee-icon {
+    font-size: 3rem;
+    color: #198754; /* Зеленый цвет из Bootstrap */
+}
+
+.faq-card {
+    transition: transform 0.2s;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.faq-card:hover {
+    transform: translateY(-5px);
+}
+
+/* === Аккордеон === */
+.accordion-button {
+    background-color: #f8f9fa;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* === Форма === */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* === Разделы === */
+.py-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+}
+
+.mt-5 {
+    margin-top: 3rem !important;
+}
