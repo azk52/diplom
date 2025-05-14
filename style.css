@@ -10,49 +10,80 @@ body {
     transform: translateY(-5px);
     transition: all 0.3s ease-in-out;
 }
-/* === Гарантии === */
-.guarantee-icon {
-    font-size: 3rem;
-    color: #198754; /* Зеленый цвет из Bootstrap */
+/* Стили для нижнего раздела с контактной информацией */
+footer .contact-info {
+  background-color: #000; /* Черный фон */
+  color: white; /* Белый текст */
 }
 
-.faq-card {
-    transition: transform 0.2s;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+/* Стили для телефона и email */
+footer .contact-info p {
+  margin: 0;
+}
+ .card {
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card {
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        a:hover,
+        a:focus,
+        a:active {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Стили для карточек */
+        .service-card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .service-card:hover a {
+    color: #b91616; /* Зеленый цвет при наведении */
+}
+/* Эффект выпуклости при наведении */
+#catalog h2 {
+    transition: transform 0.3s ease;
+    cursor: pointer; /* Указатель "рука" при наведении */
 }
 
-.faq-card:hover {
-    transform: translateY(-5px);
+#catalog h2:hover {
+    transform: translateY(-5px); /* Выпуклость */
+}
+/* Стили для ссылок в футере */
+.footer-link {
+    color: black !important; /* Белый цвет текста */
+    text-decoration: none !important; /* Убирает подчеркивание */
 }
 
-/* === Аккордеон === */
-.accordion-button {
-    background-color: #f8f9fa;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.accordion-button:focus {
-    box-shadow: none;
-    border-color: rgba(0, 0, 0, 0.1);
-}
-
-/* === Форма === */
-.contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.form-control:focus {
-    border-color: #0d6efd;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-}
-
-/* === Разделы === */
-.py-5 {
-    padding-top: 3rem !important;
-    padding-bottom: 3rem !important;
-}
-
-.mt-5 {
-    margin-top: 3rem !important;
+.footer-link:hover,
+.footer-link:focus,
+.footer-link:active {
+    color: rgb(189, 15, 24) !important; /* Остаётся белым при наведении */
+    text-decoration: none !important;
 }
