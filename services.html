@@ -51,6 +51,50 @@
         <p class="lead text-center">Мы предлагаем комплексное решение по металлоконструкциям.</p>
     </div>
 </section>
+     <!-- Контейнер услуг -->
+  <div class="container py-5 mt-5">
+    <h2 class="text-center mb-5">Наши услуги</h2>
+    <div id="services-container" class="row g-4"></div>
+  </div>
+
+  <!-- Скрипт загрузки данных -->
+  <script>
+    const sheetUrl = 'https://docs.google.com/spreadsheets/d/10D5LA8pu-mAtw4fUmI436q9wLg92G5irGWZmBZsBRH4/edit?gid=0#gid=0';
+
+    fetch(sheetUrl)
+      .then(response => response.text())
+      .then(data => {
+        const rows = data.split('\n');
+        const headers = rows[0].split(',');
+        const servicesContainer = document.getElementById('services-container');
+
+        for (let i = 1; i < rows.length; i++) {
+          const cols = rows[i].split(',');
+          if (cols.length < 3) continue;
+
+          const service = {};
+          headers.forEach((header, index) => {
+            service[header] = cols[index];
+          });
+
+          servicesContainer.innerHTML += `
+            <div class="col-md-4">
+              <div class="card shadow-sm mb-4">
+                <img src="${service['Ссылка на изображение']}" class="card-img-top" alt="${service['Название услуги']}">
+                <div class="card-body">
+                  <h5 class="card-title">${service['Название услуги']}</h5>
+                  <p class="card-text">${service['Описание']}</p>
+                </div>
+              </div>
+            </div>
+          `;
+        }
+      })
+      .catch(error => {
+        servicesContainer.innerHTML = '<p>Ошибка загрузки данных</p>';
+        console.error('Ошибка:', error);
+      });
+  </script>
 
 <!-- Таблица с услугами -->
 <section class="py-5 bg-light">
