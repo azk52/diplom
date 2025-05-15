@@ -128,13 +128,6 @@
   </div>
 </section>
 
-<!-- Footer -->
-<footer class="bg-light text-center py-4 mt-5">
-  <div class="container">
-    <p class="mb-0">&copy; 2025 ООО «Сибспецмаш». Все права защищены.</p>
-  </div>
-</footer>
-
 <!-- Modal: Product Details -->
 <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -208,5 +201,105 @@
     contactModal.show();
   }
 </script>
+  <!-- Нижний футер -->
+<footer class="bg-light py-5">
+  <div class="container">
+    <div class="row mb-4">
+      <!-- Продукция -->
+      <div class="col-md-2">
+        <h5>Продукция</h5>
+        <ul class="list-unstyled">
+          <li><a href="catalog.html" class="footer-link">Металлоконструкции</a></li>
+        </ul>
+      </div>
+
+      <!-- Услуги -->
+      <div class="col-md-2">
+        <h5>Услуги</h5>
+        <ul class="list-unstyled">
+          <li><a href="services-proejction.html" class="footer-link">Проектирование</a></li>
+          <li><a href="production.html" class="footer-link">Производство</a></li>
+          <li><a href="installation.html"  class="footer-link">Монтаж</a></li>
+        </ul>
+      </div>
+
+      <!-- Клиентам -->
+      <div class="col-md-2">
+        <h5>Клиентам</h5>
+        <ul class="list-unstyled">
+          <li><a href="guarantees.html" class="footer-link">Гарантия качества</a></li>
+        </ul>
+      </div>
+
+      <!-- О компании -->
+      <div class="col-md-2">
+        <h5>О компании</h5>
+        <ul class="list-unstyled">
+          <li><a href="company.html" class="footer-link">Справочник</a></li>
+        </ul>
+      </div>
+
+      <!-- Контакты -->
+      <div class="col-md-3">
+        <h5>Контакты</h5>
+        <p>Режим работы: пн-пт 08:00-18:00</p>
+        <p>Адрес: 665813, Иркутская область, город Ангарск, кв-л 106, д. 1, помещ. 65 </p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row align-items-center">
+      <div class="col-md-6 text-center text-md-start">
+        <h2 class="mb-0">8 908 649 60 90</h2>
+      </div>
+      <div class="col-md-3 text-center">
+        <a href="mailto:reserve.fallback@bk.ru" class="text-primary">reserve.fallback@bk.ru</a>
+      </div>
+      <div class="col-md-3 text-center">
+        <a href="success.html" class="text-muted">Правила пользования сайтом</a>
+      </div>
+    </div>
+    <!-- Footer -->
+<footer class="bg-light text-center py-4 mt-5">
+  <div class="container">
+    <p class="mb-0">&copy; 2025 ООО «Сибспецмаш». Все права защищены.</p>
+  </div>
+</footer>
+
+  
+<!-- Кнопка "Наверх" -->
+<button id="backToTop" onclick="scrollToTop()" class="btn btn-primary">
+  <i class="bi bi-arrow-up"></i> Наверх
+</button>
+
+<!-- Стили для кнопки -->
+<style>
+  #backToTop {
+    position: fixed;
+    bottom: 15px;
+    right: 20px;
+    z-index: 1000;
+    display: none;
+    transition: opacity 0.3s ease;
+  }
+</style>
+
+<!-- Скрипт для отображения при скролле -->
+<script>
+  window.addEventListener('scroll', function () {
+    const btn = document.getElementById('backToTop');
+    btn.style.display = (window.pageYOffset > 300) ? 'block' : 'none';
+  });
+
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+</script>
+  </div>
+</footer>
 </body>
 </html>
