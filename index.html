@@ -14,9 +14,7 @@
      <!-- jQuery и Inputmask -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js "></script>
-    
-    <!-- reCAPTCHA -->
-   <script src="https://www.google.com/recaptcha/api.js?render=6LeaCj8rAAAAAFmJgAGKSnoCvvDCdG3F7D_Xbt_7"></script>
+    <script src="https://www.google.com/recaptcha/api.js " async defer></script>
 </head>
 <body>
 
@@ -164,7 +162,8 @@
                         <label for="message" class="form-label">Сообщение</label>
                         <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
                     </div>
-                    <div class="g-recaptcha" data-sitekey="6LeaCj8rAAAAAFmJgAGKSnoCvvDCdG3F7D_Xbt_7"></div>
+                    <!-- Элемент CAPTCHA -->
+    <div class="g-recaptcha" data-sitekey="6LeaCj8rAAAAAFmJgAGKSnoCvvDCdG3F7D_Xbt_7"></div>
                     <button type="submit" class="btn btn-primary w-100">Отправить заявку</button>
                 </form>
 
@@ -176,20 +175,21 @@ $(document).ready(function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    const phoneInput = document.getElementById('phone');
-    phoneInput.addEventListener('input', function() {
-        this.value = this.value.replace(/[^0-9+]/g, '');
-    });
-
     const form = document.querySelector('form');
     form.addEventListener('submit', function(event) {
         event.preventDefault();
 
-        grecaptcha.ready(function() {
-            grecaptcha.execute('6LeaCj8rAAAAAFmJgAGKSnoCvvDCdG3F7D_Xbt_7', { action: 'submit' }).then(function(token) {
-                if (token) {
-                    // Отправка формы
-                    form.submit();
+        // Получаем токен CAPTCHA
+        grecaptcha.execute().then(function(token) {
+            // Добавляем токен в форму
+            const recaptchaResponse = document.createElement('input');
+            recaptchaResponse.setAttribute('type', 'hidden');
+            recaptchaResponse.setAttribute('name', 'g-recaptcha-response');
+            recaptchaResponse.setAttribute('value', token);
+            form.appendChild(recaptchaResponse);
+
+            // Отправляем форму
+            form.submit();
                 } else {
                     alert('Ошибка reCAPTCHA');
                 }
