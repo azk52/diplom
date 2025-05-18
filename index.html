@@ -201,7 +201,7 @@ $(document).ready(function() {
 <!-- reCAPTCHA -->
 <script>
 grecaptcha.ready(function() {
-    grecaptcha.execute('6LdE-z4rAAAAANsrT2zrR1FxGz1VmjZNQmf5pmXY', { action: 'submit' }).then(function(token) {
+    grecaptcha.execute('6LeaCj8rAAAAAFmJgAGKSnoCvvDCdG3F7D_Xbt_7', { action: 'submit' }).then(function(token) {
         document.querySelector('form').appendChild(document.createElement('input')).setAttribute('name', 'g-recaptcha-response').value = token;
     });
 });
