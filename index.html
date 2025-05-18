@@ -181,11 +181,12 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
 
         grecaptcha.ready(function() {
-            grecaptcha.execute('6LdE-z4rAAAAANsrT2zrR1FxGz1VmjZNQmf5pmXY', { action: 'submit' }).then(function(token) {
-                if (token) {
-                    // Добавляем токен в форму
-                    form.appendChild(document.createElement('input')).setAttribute('name', 'g-recaptcha-response').value = token;
-                    form.submit();
+            grecaptcha.ready(function() {
+    grecaptcha.execute('6LdE-z4rAAAAANsrT2zrR1FxGz1VmjZNQmf5pmXY', { action: 'submit' }).then(function(token) {
+        document.getElementById('g-recaptcha-response').value = token;
+        form.submit();
+    });
+});
                 } else {
                     alert('Ошибка reCAPTCHA');
                 }
