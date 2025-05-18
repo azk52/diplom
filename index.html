@@ -198,17 +198,8 @@ $(document).ready(function() {
     $('#phone').inputmask("+7 (999) 999-99-99");
 });
 </script>
-<!-- reCAPTCHA -->
-<script>
-grecaptcha.ready(function() {
-    grecaptcha.execute('6LeaCj8rAAAAAFmJgAGKSnoCvvDCdG3F7D_Xbt_7', { action: 'submit' }).then(function(token) {
-        document.querySelector('form').appendChild(document.createElement('input')).setAttribute('name', 'g-recaptcha-response').value = token;
-    });
-});
-</script>
-                
 
-                
+                                
                 <p class="mt-4 text-center">
                     📞 Телефон: +7 (908) 649-60-90<br>
                     📍 Адрес: г. Ангарск, кв-л 106, д. 1, помещ. 65
