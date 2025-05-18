@@ -164,14 +164,41 @@
                     </div>
                     <!-- Элемент CAPTCHA -->
                     <div class="g-recaptcha" data-sitekey="6LeaCj8rAAAAAFmJgAGKSnoCvvDCdG3F7D_Xbt_7"></div>
+                    <!-- Сообщение об ошибке -->
+    <div id="captchaError" class="text-danger mt-2" style="display: none;">
+        Пожалуйста, подтвердите, что вы не робот
+    </div>
                     <button type="submit" class="btn btn-primary w-100">Отправить заявку</button>
                 </form>
+<!-- Сообщение об ошибке reCAPTCHA -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form');
+    const captchaError = document.getElementById('captchaError');
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault(); // Останавливаем стандартную отправку
+
+        // Проверяем reCAPTCHA
+        const recaptchaResponse = grecaptcha.getResponse();
+        if (!recaptchaResponse) {
+            captchaError.style.display = 'block';
+            return false;
+        }
+
+        // Если reCAPTCHA пройдена, отправляем форму
+        captchaError.style.display = 'none';
+        form.submit();
+    });
+});
+</script>
 <!-- Скрипты -->
 <script>
 $(document).ready(function() {
     $('#phone').inputmask("+7 (999) 999-99-99");
 });
 </script>
+                
 
                 
                 <p class="mt-4 text-center">
