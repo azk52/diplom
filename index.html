@@ -197,15 +197,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
-
-<!-- reCAPTCHA -->
-<script>
-grecaptcha.ready(function() {
-    grecaptcha.execute('6LdE-z4rAAAAANsrT2zrR1FxGz1VmjZNQmf5pmXY', { action: 'submit' }).then(function(token) {
-        document.querySelector('form').appendChild(document.createElement('input')).setAttribute('name', 'g-recaptcha-response').value = token;
-    });
-});
-</script>
                 
                 <p class="mt-4 text-center">
                     📞 Телефон: +7 (908) 649-60-90<br>
