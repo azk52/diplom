@@ -16,7 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js "></script>
     
     <!-- reCAPTCHA -->
-    <script src="https://www.google.com/recaptcha/api.js?render=6LdE-z4rAAAAAEV7hzcJnqLKeqDo8Mv6Km6Lqvvz"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdE-z4rAAAAANsrT2zrR1FxGz1VmjZNQmf5pmXY"></script>
 </head>
 <body>
 
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
 
         grecaptcha.ready(function() {
-            grecaptcha.execute('6LdE-z4rAAAAAEV7hzcJnqLKeqDo8Mv6Km6Lqvvz', { action: 'submit' }).then(function(token) {
+            grecaptcha.execute('6LdE-z4rAAAAANsrT2zrR1FxGz1VmjZNQmf5pmXY', { action: 'submit' }).then(function(token) {
                 if (token) {
                     // Отправка формы
                     form.submit();
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- reCAPTCHA -->
 <script>
 grecaptcha.ready(function() {
-    grecaptcha.execute('6LdE-z4rAAAAAEV7hzcJnqLKeqDo8Mv6Km6Lqvvz', { action: 'submit' }).then(function(token) {
+    grecaptcha.execute('6LdE-z4rAAAAANsrT2zrR1FxGz1VmjZNQmf5pmXY', { action: 'submit' }).then(function(token) {
         document.querySelector('form').appendChild(document.createElement('input')).setAttribute('name', 'g-recaptcha-response').value = token;
     });
 });
