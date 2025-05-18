@@ -10,6 +10,13 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+
+     <!-- jQuery и Inputmask -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js "></script>
+    
+    <!-- reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdE-z4rAAAAANsrT2zrR1FxGz1VmjZNQmf5pmXY"></script>
 </head>
 <body>
 
@@ -81,6 +88,7 @@
     </div>
 </section>
 
+
 <!-- Catalog -->
 <section id="catalog" class="py-5 bg-light">
     <div class="container">
@@ -132,7 +140,6 @@
         </div>
     </div>
 </section>
-
 <!-- Contact -->
 <section id="contact" class="py-5 bg-light">
     <div class="container">
@@ -158,6 +165,46 @@
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Отправить заявку</button>
                 </form>
+
+
+                <!-- Скрипты -->
+<script>
+$(document).ready(function() {
+    $('#phone').inputmask("+7 (999) 999-99-99");
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const phoneInput = document.getElementById('phone');
+    phoneInput.addEventListener('input', function() {
+        this.value = this.value.replace(/[^0-9+]/g, '');
+    });
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LdE-z4rAAAAANsrT2zrR1FxGz1VmjZNQmf5pmXY', { action: 'submit' }).then(function(token) {
+                if (token) {
+                    // Отправка формы
+                    form.submit();
+                } else {
+                    alert('Ошибка reCAPTCHA');
+                }
+            });
+        });
+    });
+});
+</script>
+
+<!-- reCAPTCHA -->
+<script>
+grecaptcha.ready(function() {
+    grecaptcha.execute('6LdE-z4rAAAAANsrT2zrR1FxGz1VmjZNQmf5pmXY', { action: 'submit' }).then(function(token) {
+        document.querySelector('form').appendChild(document.createElement('input')).setAttribute('name', 'g-recaptcha-response').value = token;
+    });
+});
+</script>
                 
                 <p class="mt-4 text-center">
                     📞 Телефон: +7 (908) 649-60-90<br>
@@ -213,8 +260,8 @@
         <h5>Услуги</h5>
         <ul class="list-unstyled">
           <li><a href="services-proejction.html" class="footer-link">Проектирование</a></li>
-          <li><a href="production.html" class="footer-link">Производство</a></li>
-          <li><a href="installation.html"  class="footer-link">Монтаж</a></li>
+          <li><a href="#">Производство</a></li>
+          <li><a href="#">Монтаж</a></li>
         </ul>
       </div>
 
