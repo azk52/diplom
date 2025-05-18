@@ -16,7 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js "></script>
     
     <!-- reCAPTCHA -->
-   <script src="https://www.google.com/recaptcha/api.js?render=6LdE-z4rAAAAANsrT2zrR1FxGz1VmjZNQmf5pmXY "></script>
+   <script src="https://www.google.com/recaptcha/api.js?render=6LdE-z4rAAAAANsrT2zrR1FxGz1VmjZNQmf5pmXY"></script>
 </head>
 <body>
 
@@ -175,11 +175,6 @@ $(document).ready(function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    const phoneInput = document.getElementById('phone');
-    phoneInput.addEventListener('input', function() {
-        this.value = this.value.replace(/[^0-9+]/g, '');
-    });
-
     const form = document.querySelector('form');
     form.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -187,7 +182,8 @@ document.addEventListener('DOMContentLoaded', function() {
         grecaptcha.ready(function() {
             grecaptcha.execute('6LdE-z4rAAAAANsrT2zrR1FxGz1VmjZNQmf5pmXY', { action: 'submit' }).then(function(token) {
                 if (token) {
-                    // Отправка формы
+                    // Добавляем токен в форму
+                    form.appendChild(document.createElement('input')).setAttribute('name', 'g-recaptcha-response').value = token;
                     form.submit();
                 } else {
                     alert('Ошибка reCAPTCHA');
