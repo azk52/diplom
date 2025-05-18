@@ -176,17 +176,20 @@ $(document).ready(function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+    const phoneInput = document.getElementById('phone');
+    phoneInput.addEventListener('input', function() {
+        this.value = this.value.replace(/[^0-9+]/g, '');
+    });
+
     const form = document.querySelector('form');
     form.addEventListener('submit', function(event) {
         event.preventDefault();
 
         grecaptcha.ready(function() {
-            grecaptcha.ready(function() {
-    grecaptcha.execute('6LdE-z4rAAAAANsrT2zrR1FxGz1VmjZNQmf5pmXY', { action: 'submit' }).then(function(token) {
-        document.getElementById('g-recaptcha-response').value = token;
-        form.submit();
-    });
-});
+            grecaptcha.execute('6LdE-z4rAAAAANsrT2zrR1FxGz1VmjZNQmf5pmXY', { action: 'submit' }).then(function(token) {
+                if (token) {
+                    // Отправка формы
+                    form.submit();
                 } else {
                     alert('Ошибка reCAPTCHA');
                 }
@@ -195,6 +198,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+
+<!-- reCAPTCHA -->
+<script>
+grecaptcha.ready(function() {
+    grecaptcha.execute('6LdE-z4rAAAAANsrT2zrR1FxGz1VmjZNQmf5pmXY', { action: 'submit' }).then(function(token) {
+        document.querySelector('form').appendChild(document.createElement('input')).setAttribute('name', 'g-recaptcha-response').value = token;
+    });
+});
+    </script>
                 
                 <p class="mt-4 text-center">
                     📞 Телефон: +7 (908) 649-60-90<br>
