@@ -16,7 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js "></script>
     
     <!-- reCAPTCHA -->
-   <script src="https://www.google.com/recaptcha/api.js?render=6LdE-z4rAAAAANsrT2zrR1FxGz1VmjZNQmf5pmXY"></script>
+   <script src="https://www.google.com/recaptcha/api.js?render=6LeaCj8rAAAAAFmJgAGKSnoCvvDCdG3F7D_Xbt_7"></script>
 </head>
 <body>
 
@@ -164,7 +164,7 @@
                         <label for="message" class="form-label">Сообщение</label>
                         <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
                     </div>
-                    <div class="g-recaptcha" data-sitekey="6LdE-z4rAAAAANsrT2zrR1FxGz1VmjZNQmf5pmXY"></div>
+                    <div class="g-recaptcha" data-sitekey="6LeaCj8rAAAAAFmJgAGKSnoCvvDCdG3F7D_Xbt_7"></div>
                     <button type="submit" class="btn btn-primary w-100">Отправить заявку</button>
                 </form>
 
@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
 
         grecaptcha.ready(function() {
-            grecaptcha.execute('6LdE-z4rAAAAANsrT2zrR1FxGz1VmjZNQmf5pmXY', { action: 'submit' }).then(function(token) {
+            grecaptcha.execute('6LeaCj8rAAAAAFmJgAGKSnoCvvDCdG3F7D_Xbt_7', { action: 'submit' }).then(function(token) {
                 if (token) {
                     // Отправка формы
                     form.submit();
@@ -199,14 +199,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<!-- reCAPTCHA -->
-<script>
-grecaptcha.ready(function() {
-    grecaptcha.execute('6LdE-z4rAAAAANsrT2zrR1FxGz1VmjZNQmf5pmXY', { action: 'submit' }).then(function(token) {
-        document.querySelector('form').appendChild(document.createElement('input')).setAttribute('name', 'g-recaptcha-response').value = token;
-    });
-});
-    </script>
                 
                 <p class="mt-4 text-center">
                     📞 Телефон: +7 (908) 649-60-90<br>
