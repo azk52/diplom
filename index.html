@@ -172,57 +172,46 @@
     </div>
                     <button type="submit" class="btn btn-primary w-100">Отправить заявку</button>
                 </form>
-<!-- Сообщение об ошибке reCAPTCHA -->
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('form');
-    const captchaError = document.getElementById('captchaError');
 
-    form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Останавливаем стандартную отправку
-
-        // Проверяем reCAPTCHA
-        const recaptchaResponse = grecaptcha.getResponse();
-        if (!recaptchaResponse) {
-            captchaError.style.display = 'block';
-            return false;
-        }
-
-        // Если reCAPTCHA пройдена, отправляем форму
-        captchaError.style.display = 'none';
-        form.submit();
-    });
-});
-</script>
 <!-- Скрипты -->
 <script>
 $(document).ready(function() {
     $('#phone').inputmask("+7 (999) 999-99-99");
 });
+</script>
     
-// Валидация формы
+<script>
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('form');
+    const phoneInput = document.getElementById('phone');
+    const captchaError = document.getElementById('captchaError');
     const phoneError = document.getElementById('phoneError');
-  
 
     form.addEventListener('submit', function(event) {
         event.preventDefault();
 
-        const phone = document.getElementById('phone').value;
-        const phonePattern = /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/;
-         
+        // Сброс предыдущих ошибок
+        captchaError.style.display = 'none';
+        phoneError.style.display = 'none';
 
-        if (!phonePattern.test(phone)) {
+        // Проверка телефона
+        const phonePattern = /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/;
+        if (!phonePattern.test(phoneInput.value)) {
             phoneError.style.display = 'block';
             return false;
-        } else {
-            phoneError.style.display = 'none';
-            form.submit();
         }
+
+        // Проверка CAPTCHA
+        const token = grecaptcha.getResponse();
+        if (!token) {
+            captchaError.style.display = 'block';
+            return false;
+        }
+
+        // Если всё ок — отправляем форму
+        form.submit();
     });
 });
-   
 </script>
 
                                 
