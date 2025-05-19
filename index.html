@@ -157,6 +157,8 @@
                     <div class="mb-3">
                         <label for="phone" class="form-label">Телефон</label>
                         <input type="tel" class="form-control" id="phone" name="phone" required>
+                        <div id="phoneError" class="text-danger mt-2" style="display: none;">
+                           Неверный формат телефона! Пример: +7 (908) 649-60-90
                     </div>
                     <div class="mb-3">
                         <label for="message" class="form-label">Сообщение</label>
@@ -196,6 +198,27 @@ document.addEventListener('DOMContentLoaded', function () {
 <script>
 $(document).ready(function() {
     $('#phone').inputmask("+7 (999) 999-99-99");
+});
+    
+// Валидация формы
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    const phoneError = document.getElementById('phoneError');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const phone = document.getElementById('phone').value;
+        const phonePattern = /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/;
+
+        if (!phonePattern.test(phone)) {
+            phoneError.style.display = 'block';
+            return false;
+        } else {
+            phoneError.style.display = 'none';
+            form.submit();
+        }
+    });
 });
 </script>
 
