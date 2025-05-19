@@ -22,7 +22,7 @@
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top animate__animated animate__fadeInDown">
     <div class="container">
         <!-- Логотип (если есть) -->
         <a class="navbar-brand d-flex align-items-center" href="#">
@@ -56,7 +56,7 @@
 </section>
 
 <!-- Наши услуги -->
-<section id="catalog" class="py-5 bg-light">
+<section id="catalog" class="py-5 bg-light animate__animated animate__zoomIn">
     <div class="container">
       <h2 class="text-center mb-5">
          <a href ="services.html">Наши услуги</a>
@@ -348,6 +348,27 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 </script>
+      <!-- Стили для анимаций -->
+<style>
+/* Эффект при наведении */
+.service-card:hover,
+.product-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Анимация тряски */
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+</style>
   </div>
 </footer>
 <!-- Footer -->
