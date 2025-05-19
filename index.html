@@ -174,25 +174,7 @@
                 </form>
 <!-- Сообщение об ошибке reCAPTCHA -->
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('form');
-    const captchaError = document.getElementById('captchaError');
 
-    form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Останавливаем стандартную отправку
-
-        // Проверяем reCAPTCHA
-        const recaptchaResponse = grecaptcha.getResponse();
-        if (!recaptchaResponse) {
-            captchaError.style.display = 'block';
-            return false;
-        }
-
-        // Если reCAPTCHA пройдена, отправляем форму
-        captchaError.style.display = 'none';
-        form.submit();
-    });
-});
 </script>
 <!-- Скрипты -->
 <script>
@@ -218,6 +200,25 @@ document.addEventListener('DOMContentLoaded', function() {
             phoneError.style.display = 'none';
             form.submit();
         }
+    });
+});
+    document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form');
+    const captchaError = document.getElementById('captchaError');
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault(); // Останавливаем стандартную отправку
+
+        // Проверяем reCAPTCHA
+        const recaptchaResponse = grecaptcha.getResponse();
+        if (!recaptchaResponse) {
+            captchaError.style.display = 'block';
+            return false;
+        }
+
+        // Если reCAPTCHA пройдена, отправляем форму
+        captchaError.style.display = 'none';
+        form.submit();
     });
 });
 </script>
