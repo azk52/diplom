@@ -186,39 +186,31 @@ $(document).ready(function() {
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('form');
     const phoneError = document.getElementById('phoneError');
+    const form = document.querySelector('form');
+    const captchaError = document.getElementById('captchaError');
 
     form.addEventListener('submit', function(event) {
         event.preventDefault();
 
         const phone = document.getElementById('phone').value;
         const phonePattern = /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/;
+         const recaptchaResponse = grecaptcha.getResponse();
+        
+        if (!recaptchaResponse) {
+            captchaError.style.display = 'block';
+            return false;
 
         if (!phonePattern.test(phone)) {
             phoneError.style.display = 'block';
             return false;
         } else {
             phoneError.style.display = 'none';
+            captchaError.style.display = 'none';
             form.submit();
         }
     });
 });
-    document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('form');
-    const captchaError = document.getElementById('captchaError');
-
-    form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Останавливаем стандартную отправку
-
-        // Проверяем reCAPTCHA
-        const recaptchaResponse = grecaptcha.getResponse();
-        if (!recaptchaResponse) {
-            captchaError.style.display = 'block';
-            return false;
-        }
-
-       
-    });
-});
+   
 </script>
 
                                 
