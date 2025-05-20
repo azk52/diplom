@@ -226,7 +226,8 @@
  // Отправка данных в Airtable
 document.getElementById('airtableForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-
+    
+    // Получаем значения
     const title = document.querySelector('[name="title"]').value.trim();
     const url = document.querySelector('[name="url"]').value.trim();
     const tags = document.querySelector('[name="tags"]').value
@@ -234,12 +235,57 @@ document.getElementById('airtableForm').addEventListener('submit', async functio
         .map(tag => tag.trim())
         .filter(tag => tag !== '');
 
+    const captchaError = document.getElementById('captchaError');
+    const successMessage = document.getElementById('successMessage');
+    const form = document.getElementById('airtableForm');
+    
+    // Сбрасываем ошибки
+    captchaError.classList.add('d-none');
+    successMessage.classList.add('d-none');
+    
+    // Сбрасываем стили валидации
+    document.querySelectorAll('.is-invalid').forEach(input => input.classList.remove('is-invalid'));
+    document.querySelectorAll('.invalid-feedback').forEach(feedback => feedback.classList.remove('d-block'));
+
+    // Валидация обязательных полей
+    let isValid = true;
+
+    if (!title) {
+        document.getElementById('title').classList.add('is-invalid');
+        document.querySelector('#title + .invalid-feedback').classList.add('d-block');
+        isValid = false;
+    }
+
+    if (!url) {
+        document.getElementById('url').classList.add('is-invalid');
+        document.querySelector('#url + .invalid-feedback').classList.add('d-block');
+        isValid = false;
+    } else {
+        const urlPattern = /^(https?:\/\/\S+)$/i;
+        if (!urlPattern.test(url)) {
+            document.getElementById('url').classList.add('is-invalid');
+            document.querySelector('#url + .invalid-feedback').textContent = 'Введите корректный URL';
+            isValid = false;
+        }
+    }
+
+    // Проверка reCAPTCHA
+    const token = grecaptcha.getResponse();
+    if (!token) {
+        captchaError.classList.remove('d-none');
+        isValid = false;
+    }
+
+    // Если не прошла валидация — останавливаем отправку
+    if (!isValid) return false;
+
+    // Отправка данных в Airtable
     const apiKey = 'patrxA9ZqPy0eYTjE.86d953a7de0a4c7c2f8d89b1e72e5b4ef9d1c4b8b5e50286ed4e932cfad4a4cd';
     const baseId = 'appWqIozRKGDvzGr8';
     const tableName = 'Gallery';
 
     try {
-        const response = await fetch(`https://api.airtable.com/v0/${baseId}/${tableName}`, {
+        const response = await fetch(`https://api.airtable.com/v0/ ${baseId}/${tableName}`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${apiKey}`,
@@ -249,14 +295,15 @@ document.getElementById('airtableForm').addEventListener('submit', async functio
                 fields: {
                     Title: title,
                     'Image URL': url,
-                    Tags: tags.join(',') // Или отправляйте как массив, если поле поддерживает
+                    Tags: tags.join(',') // или отправляйте как массив, если поле поддерживает
                 }
             })
         });
 
         if (response.ok) {
-            alert('Данные успешно добавлены!');
-            document.getElementById('airtableForm').reset();
+            successMessage.classList.remove('d-none');
+            form.reset();
+            grecaptcha.reset(); // Сбрасываем reCAPTCHA
         } else {
             const errorData = await response.json();
             console.error('Ошибка Airtable:', errorData);
@@ -264,7 +311,7 @@ document.getElementById('airtableForm').addEventListener('submit', async functio
         }
     } catch (error) {
         console.error('Ошибка сети:', error);
-        alert('Не удалось отправить данные. Проверьте подключение к интернету.');
+        alert('Не удалось отправить данные. Проверьте интернет.');
     }
 });
   </script>
