@@ -87,3 +87,6 @@ footer .contact-info p {
     color: rgb(189, 15, 24) !important; /* Остаётся белым при наведении */
     text-decoration: none !important;
 }
+#contact {
+    scroll-margin-top: 80px; /* Подберите значение под высоту меню */
+}
