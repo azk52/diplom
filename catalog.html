@@ -304,7 +304,16 @@ document.getElementById('airtableForm').addEventListener('submit', async functio
             successMessage.classList.remove('d-none');
             form.reset();
             grecaptcha.reset(); // Сбрасываем reCAPTCHA
-        } 
+        } else {
+            const errorData = await response.json();
+            console.error('Ошибка Airtable:', errorData);
+            alert('Ошибка отправки данных:\n' + JSON.stringify(errorData));
+        }
+    } catch (error) {
+        console.error('Ошибка сети:', error);
+        alert('Не удалось отправить данные. Проверьте интернет.');
+    }
+});
   </script>
 
 
