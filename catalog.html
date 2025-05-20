@@ -221,79 +221,8 @@
         </div>
     </div>
 </section>
-  
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('form');
-    const messageInput = document.getElementById('message');
-    const captchaError = document.getElementById('captchaError');
-    const phoneError = document.getElementById('phoneError');
-  
-
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        // Сброс всех ошибок
-       
-        captchaError.style.display = 'none';
-
-        // Проверка CAPTCHA
-        const token = grecaptcha.getResponse();
-        if (!token) {
-            captchaError.style.display = 'block';
-            return false;
-        }
-
-        // Если всё ок — отправляем форму
-        form.submit();
-    });
-});
-</script>
-
-
-  
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-
-
-  function scrollToContact() {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
-    } else {
-        window.location.href = 'index.html#contact';
-    }
-}
-  
-  // Обработчик клика по карточке товара
-  document.querySelectorAll('.product-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const name = card.dataset.name;
-      const description = card.dataset.desc;
-      const price = card.dataset.price;
-      
-      const image = card.dataset.image;
-
-      document.getElementById('modalName').textContent = name;
-      document.getElementById('modalDescription').textContent = description;
-      document.getElementById('modalPrice').textContent = `Цена: ${price} руб.`;
-      
-      document.getElementById('modalImage').src = image;
-    });
-  });
-
-  // Функция открытия контактов
-  function addToCart() {
-    const productModal = bootstrap.Modal.getInstance(document.getElementById('productModal'));
-    productModal.hide();
-
-    const contactModal = new bootstrap.Modal(document.getElementById('contactModal'));
-    contactModal.show();
-  }
-</script>
-<script>
   // Отправка данных в Airtable
 async function submitToAirtable(title, url, tags) {
     const response = await fetch('https://api.airtable.com/v0/appWqIozRKGDvzGr8/Gallery', {
@@ -344,6 +273,53 @@ document.getElementById('airtableForm').addEventListener('submit', function (eve
     });
 });
 </script>
+
+
+
+
+  
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+
+
+  function scrollToContact() {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+    } else {
+        window.location.href = 'index.html#contact';
+    }
+}
+  
+  // Обработчик клика по карточке товара
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const name = card.dataset.name;
+      const description = card.dataset.desc;
+      const price = card.dataset.price;
+      
+      const image = card.dataset.image;
+
+      document.getElementById('modalName').textContent = name;
+      document.getElementById('modalDescription').textContent = description;
+      document.getElementById('modalPrice').textContent = `Цена: ${price} руб.`;
+      
+      document.getElementById('modalImage').src = image;
+    });
+  });
+
+  // Функция открытия контактов
+  function addToCart() {
+    const productModal = bootstrap.Modal.getInstance(document.getElementById('productModal'));
+    productModal.hide();
+
+    const contactModal = new bootstrap.Modal(document.getElementById('contactModal'));
+    contactModal.show();
+  }
+</script>
+  
 
   
 <!-- Нижний футер -->
