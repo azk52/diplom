@@ -285,7 +285,7 @@ document.getElementById('airtableForm').addEventListener('submit', async functio
     const tableName = 'Gallery';
 
     try {
-        const response = await fetch(`https://api.airtable.com/v0/ ${baseId}/${tableName}`, {
+        const response = await fetch(`https://api.airtable.com/v0/${baseId}/${tableName}`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${apiKey}`,
