@@ -188,6 +188,23 @@ $(document).ready(function() {
     $('#phone').inputmask("+7 (999) 999-99-99");
 });
 </script>
+                
+<script>
+$(document).ready(function () {
+    $('#phone').inputmask("+7 (999) 999-99-99");
+    
+    // Валидация email
+    $('#email').on('input', function () {
+        const email = $(this).val();
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email) && email.length > 0) {
+            $('#emailError').show().addClass('shake');
+        } else {
+            $('#emailError').hide().removeClass('shake');
+        }
+    });
+});
+</script>
     
 <script>
 document.addEventListener('DOMContentLoaded', function() {
