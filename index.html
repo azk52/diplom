@@ -162,6 +162,13 @@
                         <div id="phoneError" class="text-danger mt-2" style="display: none;">
                            Неверный формат телефона! Пример: +7 (908) 649-60-90
                     </div>
+                    <div class="mb-3 animate__animated animate__fadeInRight">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                        <div id="emailError" class="text-danger mt-2" style="display: none;">
+                         Неверный формат электронной почты. Пример: example@mail.ru
+                   </div>
+                   </div>
                     <div class="mb-3 animate__animated animate__fadeInLeft">
                         <label for="message" class="form-label">Сообщение</label>
                         <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
@@ -186,20 +193,31 @@ $(document).ready(function() {
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('form');
     const phoneInput = document.getElementById('phone');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
     const captchaError = document.getElementById('captchaError');
     const phoneError = document.getElementById('phoneError');
+    const emailError = document.getElementById('emailError');
 
     form.addEventListener('submit', function(event) {
         event.preventDefault();
 
-        // Сброс предыдущих ошибок
-        captchaError.style.display = 'none';
+        // Сброс всех ошибок
         phoneError.style.display = 'none';
+        emailError.style.display = 'none';
+        captchaError.style.display = 'none';
 
         // Проверка телефона
         const phonePattern = /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/;
         if (!phonePattern.test(phoneInput.value)) {
             phoneError.style.display = 'block';
+            return false;
+        }
+
+        // Проверка email
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(emailInput.value)) {
+            emailError.style.display = 'block';
             return false;
         }
 
