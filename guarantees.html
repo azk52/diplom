@@ -158,41 +158,41 @@
 
 <!-- Contact Form -->
 <!-- Форма -->
-<form action="https://formspree.io/f/mzzrgyon " method="POST">
-    <!-- Скрытые параметры -->
-    <input type="hidden" name="_next" value="https://azk52.github.io/diplom/success.html ">
-    <input type="hidden" name="_subject" value="Вопрос по гарантии">
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form action="https://formspree.io/f/mzzrgyon " method="POST">
+                <!-- Скрытые параметры -->
+                <input type="hidden" name="_next" value="https://azk52.github.io/diplom/success.html ">
+                <input type="hidden" name="_subject" value="Вопрос по гарантии">
 
-    <!-- Имя -->
-    <div class="mb-3">
-        <label for="name" class="form-label">Имя</label>
-        <input type="text" class="form-control" id="name" name="name" required>
-    </div>
+                <!-- Имя -->
+                <div class="mb-3">
+                    <label for="name" class="form-label">Имя</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
 
-    <!-- Email -->
-    <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email" required>
-        <div id="emailError" class="text-danger mt-2" style="display: none;">
-            Неверный формат электронной почты. Пример: example@mail.ru
+                <!-- Email -->
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+
+                <!-- Вопрос -->
+                <div class="mb-3">
+                    <label for="question" class="form-label">Ваш вопрос</label>
+                    <textarea class="form-control" id="question" name="question" rows="4" required></textarea>
+                </div>
+
+                <!-- reCAPTCHA -->
+                <div class="g-recaptcha mb-3" data-sitekey="6LeaCj8rAAAAAFmJgAGKSnoCvvDCdG3F7D_Xbt_7"></div>
+
+                <!-- Кнопка отправки -->
+                <button type="submit" class="btn btn-primary w-100">Отправить запрос</button>
+            </form>
         </div>
     </div>
-
-    <!-- Вопрос -->
-    <div class="mb-3">
-        <label for="question" class="form-label">Ваш вопрос</label>
-        <textarea class="form-control" id="question" name="question" rows="4" required></textarea>
-    </div>
-
-    <!-- reCAPTCHA -->
-    <div class="g-recaptcha" data-sitekey="6LeaCj8rAAAAAFmJgAGKSnoCvvDCdG3F7D_Xbt_7"></div>
-    <div id="captchaError" class="text-danger mt-2 d-none">
-        Пожалуйста, подтвердите, что вы не робот
-    </div>
-
-    <!-- Кнопка отправки -->
-    <button type="submit" class="btn btn-primary w-100">Отправить запрос</button>
-</form>
+</div>
 
     <script>
 document.addEventListener('DOMContentLoaded', function() {
