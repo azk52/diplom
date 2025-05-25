@@ -176,6 +176,9 @@
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" name="email" required>
+                    <div id="emailError" class="text-danger mt-2" style="display: none;">
+                            Неверный формат электронной почты. Пример: example@mail.ru
+                    </div>
                 </div>
 
                 <!-- Вопрос -->
@@ -186,6 +189,9 @@
 
                 <!-- reCAPTCHA -->
                 <div class="g-recaptcha mb-3" data-sitekey="6LeaCj8rAAAAAFmJgAGKSnoCvvDCdG3F7D_Xbt_7"></div>
+                <div id="captchaError" class="text-danger mt-2 d-none">
+                        Пожалуйста, подтвердите, что вы не робот
+                </div>
 
                 <!-- Кнопка отправки -->
                 <button type="submit" class="btn btn-primary w-100">Отправить запрос</button>
