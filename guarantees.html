@@ -201,6 +201,21 @@
     </div>
 </div>
 
+   <!--  Валидация емайл-->
+<script>
+   $('#email').on('input', function () {
+        const email = $(this).val();
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email) && email.length > 0) {
+            $('#emailError').show().addClass('shake');
+        } else {
+            $('#emailError').hide().removeClass('shake');
+        }
+    });
+});
+</script>
+    
+    
     <script>
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('form');
