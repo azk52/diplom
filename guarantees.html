@@ -8,6 +8,7 @@
     <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js " async defer></script>
     
     <style>
         .guarantee-icon {
@@ -156,28 +157,76 @@
 </section>
 
 <!-- Contact Form -->
-<section class="py-5 bg-light">
-    <div class="container">
-        <h2 class="text-center mb-5">Есть вопросы по гарантии?</h2>
-        <form class="contact-form" action="https://formspree.io/f/mzzrgyon" method="POST">
-            <input type="hidden" name="_next" value="https://azk52.github.io/diplom/success.html ">
-            <input type="hidden" name="_subject" value="Новая заявка с сайта">
-            <div class="mb-3">
-                <label for="name" class="form-label">Имя</label>
-                <input type="text" class="form-control" id="name" name="name" required>
-            </div>
-            <div class="mb-3">
-                <label for="phone" class="form-label">Телефон</label>
-                <input type="tel" class="form-control" id="phone" name="phone" required>
-            </div>
-            <div class="mb-3">
-                <label for="question" class="form-label">Ваш вопрос</label>
-                <textarea class="form-control" id="question" name="message" rows="4" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Отправить запрос</button>
-        </form>
+<!-- Форма -->
+<form action="https://formspree.io/f/mzzrgyon " method="POST">
+    <!-- Скрытые параметры -->
+    <input type="hidden" name="_next" value="https://azk52.github.io/diplom/success.html ">
+    <input type="hidden" name="_subject" value="Вопрос по гарантии">
+
+    <!-- Имя -->
+    <div class="mb-3">
+        <label for="name" class="form-label">Имя</label>
+        <input type="text" class="form-control" id="name" name="name" required>
     </div>
-</section>
+
+    <!-- Email -->
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+        <div id="emailError" class="text-danger mt-2" style="display: none;">
+            Неверный формат электронной почты. Пример: example@mail.ru
+        </div>
+    </div>
+
+    <!-- Вопрос -->
+    <div class="mb-3">
+        <label for="question" class="form-label">Ваш вопрос</label>
+        <textarea class="form-control" id="question" name="question" rows="4" required></textarea>
+    </div>
+
+    <!-- reCAPTCHA -->
+    <div class="g-recaptcha" data-sitekey="6LeaCj8rAAAAAFmJgAGKSnoCvvDCdG3F7D_Xbt_7"></div>
+    <div id="captchaError" class="text-danger mt-2 d-none">
+        Пожалуйста, подтвердите, что вы не робот
+    </div>
+
+    <!-- Кнопка отправки -->
+    <button type="submit" class="btn btn-primary w-100">Отправить запрос</button>
+</form>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    const emailInput = document.getElementById('email');
+    const captchaError = document.getElementById('captchaError');
+    const emailError = document.getElementById('emailError');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Сброс ошибок
+        captchaError.classList.add('d-none');
+        emailError.style.display = 'none';
+
+        // Проверка email
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(emailInput.value)) {
+            emailError.style.display = 'block';
+            return false;
+        }
+
+        // Проверка reCAPTCHA
+        const token = grecaptcha.getResponse();
+        if (!token) {
+            captchaError.classList.remove('d-none');
+            return false;
+        }
+
+        // Отправка формы
+        form.submit();
+    });
+});
+</script>
 
 <!-- Footer -->
 <footer class="bg-light text-center py-4 mt-5">
