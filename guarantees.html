@@ -157,77 +157,101 @@
 </section>
 
 <!-- Contact Form -->
-<section class="py-5 bg-light">
+<!-- Contact -->
+<section id="contact" class="py-5 bg-light animate__animated animate__fadeInUp">
     <div class="container">
-        <h2 class="text-center mb-5">Есть вопросы по гарантии?</h2>
-    <form class="contactForm" action="https://formspree.io/f/mzzrgyon " method="POST">
-    <!-- Скрытые параметры -->
-    <input type="hidden" name="_next" value="https://azk52.github.io/diplom/success.html ">
-    <input type="hidden" name="_subject" value="Новая заявка с сайта">
+        <h2 class="text-center mb-5 animate__animated animate__fadeIn">Свяжитесь с ООО «Сибспецмаш»</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-8 animate__animated animate__zoomIn">
+                <form action="https://formspree.io/f/mzzrgyon" method="POST">
+                    <!-- Скрытые параметры -->
+                    <input type="hidden" name="_next" value="https://azk52.github.io/diplom/success.html">
+                    <input type="hidden" name="_subject" value="Новая заявка с сайта">
 
-    <!-- Имя -->
-    <div class="mb-3">
-        <label for="name" class="form-label">Имя</label>
-        <input type="text" class="form-control" id="name" name="name" required>
-        <div id="nameError" class="invalid-feedback d-none">Пожалуйста, введите имя</div>
-    </div>
-
-    <!-- Email -->
-    <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email" required>
-        <div id="emailError" class="text-danger mt-2 d-none">
-            Неверный формат электронной почты. Пример: example@mail.ru
-        </div>
-    </div>
-
-    <!-- Сообщение -->
-    <div class="mb-3">
-        <label for="message" class="form-label">Сообщение</label>
-        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-        <div id="messageError" class="invalid-feedback d-none">Пожалуйста, введите сообщение</div>
-    </div>
-
-    <!-- reCAPTCHA -->
-    <div class="g-recaptcha mb-3" data-sitekey="6LeaCj8rAAAAAFmJgAGKSnoCvvDCdG3F7D_Xbt_7"></div>
-    <div id="captchaError" class="text-danger mt-2 d-none">
+                    <div class="mb-3 animate__animated animate__fadeInLeft">
+                        <label for="name" class="form-label">Имя</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3 animate__animated animate__fadeInRight">
+                        <label for="phone" class="form-label">Телефон</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                        <div id="phoneError" class="text-danger mt-2" style="display: none;">
+                           Неверный формат телефона! Пример: +7 (908) 649-60-90
+                    </div>
+                    <div class="mb-3 animate__animated animate__fadeInRight">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                        <div id="emailError" class="text-danger mt-2" style="display: none;">
+                         Неверный формат электронной почты. Пример: example@mail.ru
+                   </div>
+                   </div>
+                    <div class="mb-3 animate__animated animate__fadeInLeft">
+                        <label for="message" class="form-label">Сообщение</label>
+                        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <!-- Элемент CAPTCHA -->
+                    <div class="g-recaptcha animate__animated animate__shakeX" data-sitekey="6LeaCj8rAAAAAFmJgAGKSnoCvvDCdG3F7D_Xbt_7"></div>
+                    <!-- Сообщение об ошибке -->
+    <div id="captchaError" class="text-danger mt-2" style="display: none;">
         Пожалуйста, подтвердите, что вы не робот
     </div>
+                    <button type="submit" class="btn btn-primary w-100">Отправить заявку</button>
+                </form>
 
-    <!-- Кнопка отправки -->
-    <button type="submit" class="btn btn-primary w-100">Отправить заявку</button>
-</form>
-        <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('contactForm');
-    const nameInput = document.getElementById('name');
+<!-- Скрипты -->                
+<script>
+$(document).ready(function () {
+    $('#phone').inputmask("+7 (999) 999-99-99");
+    
+    // Валидация email
+    $('#email').on('input', function () {
+        const email = $(this).val();
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email) && email.length > 0) {
+            $('#emailError').show().addClass('shake');
+        } else {
+            $('#emailError').hide().removeClass('shake');
+        }
+    });
+});
+</script>
+    
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    const phoneInput = document.getElementById('phone');
     const emailInput = document.getElementById('email');
     const messageInput = document.getElementById('message');
     const captchaError = document.getElementById('captchaError');
+    const phoneError = document.getElementById('phoneError');
     const emailError = document.getElementById('emailError');
 
-    form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Останавливаем стандартную отправку
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
 
-        // Сброс ошибок
-        captchaError.classList.add('d-none');
-        emailError.classList.add('d-none');
-        nameInput.classList.remove('is-invalid');
-        emailInput.classList.remove('is-invalid');
-        messageInput.classList.remove('is-invalid');
+        // Сброс всех ошибок
+        phoneError.style.display = 'none';
+        emailError.style.display = 'none';
+        captchaError.style.display = 'none';
 
-        // Валидация email
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(emailInput.value)) {
-            emailError.classList.remove('d-none');
-            emailInput.classList.add('is-invalid');
+        // Проверка телефона
+        const phonePattern = /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/;
+        if (!phonePattern.test(phoneInput.value)) {
+            phoneError.style.display = 'block';
             return false;
         }
 
-        // Проверка reCAPTCHA
+        // Проверка email
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(emailInput.value)) {
+            emailError.style.display = 'block';
+            return false;
+        }
+
+        // Проверка CAPTCHA
         const token = grecaptcha.getResponse();
         if (!token) {
-            captchaError.classList.remove('d-none');
+            captchaError.style.display = 'block';
             return false;
         }
 
@@ -236,7 +260,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 </script>
-</div>
+                                
+                <p class="mt-4 text-center animate__animated animate__fadeIn">
+                    📞 Телефон: +7 (908) 649-60-90<br>
+                    📍 Адрес: г. Ангарск, кв-л 106, д. 1, помещ. 65
+                </p>
+            </div>
+        </div>
+    </div>
 </section>
     
   
