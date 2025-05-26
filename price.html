@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Металлоконструкции - ООО Сибспецмаш</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com "></script>
+
+  <!-- jsPDF для экспорта в PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js "></script>
+
+  <!-- html2canvas для скриншота страницы -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js "></script>
+    <!-- Animate  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css ">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+  
+</head>
+<body class="bg-gray-100">
+
+  <!-- Шапка сайта -->
+<header class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white sticky top-0 z-50 shadow-md navbar navbar-expand-lg navbar-dark bg-primary fixed-top animate__animated animate__fadeInDown ">
+  <div class="container mx-auto flex justify-between items-center p-4">
+    <!-- Логотип -->
+    <div class="flex items-center space-x-3">
+   <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="logo.png" alt="Логотип Сибспецмаш" width="150" class="me-2">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+     </div>
+    <!-- Меню -->
+    <nav class="space-x-6 hidden md:flex ">
+      <a href="services.html" class="hover:text-yellow-300 transition duration-300">Услуги</a>
+      <a href="catalog.html" class="hover:text-yellow-300 transition duration-300">Каталог</a>
+      <a href="price.html" class="hover:text-yellow-300 transition duration-300">Прайс-лист</a>
+      <a href="index.html" class="hover:text-yellow-300 transition duration-300">Контакты</a>
+      <a href="company.html" class="hover:text-yellow-300 transition duration-300">О компании</a>
+      <a href="guarantees.html" class="hover:text-yellow-300 transition duration-300">Гарантии</a>
+    </nav>
+  </div>
+</header>
+
+  <!-- Главный раздел -->
+  <section class="bg-gradient-to-b from-blue-600 to-indigo-600 text-white py-16 px-4 animate__animated animate__fadeInUp">
+    <div class="container mx-auto max-w-3xl text-center fade-in">
+      <h1 class="text-4xl font-bold mb-4">Металлоконструкции от ООО «Сибспецмаш»</h1>
+      <p class="text-xl mb-8">Производство и монтаж металлических конструкций любой сложности</p>
+      <button id="request-btn"
+        class="bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-700 hover:text-white transition duration-300 transform hover:scale-105">
+         <a href="index.html#contact" class="btn btn-light btn-lg mt-4 animate__animated animate__pulse animate__infinite">Оставить заявку</a>
+      </button>
+    </div>
+  </section>
+
+  <!-- Наши услуги -->
+  <section class="py-16 bg-gray-50 fade-in animate__animated animate__zoomIn" style="animation-delay: 0.7s;">
+    <div class="container mx-auto px-6">
+      <h2 class="text-2xl font-bold text-center text-gray-800 mb-8">Наши услуги</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Блок 1 -->
+        <div class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+          <h3 class="text-xl font-bold mb-2">Проектирование</h3>
+          <p class="text-gray-600">Разработка чертежей и документации согласно техническим условиям.</p>
+        </div>
+        <!-- Блок 2 -->
+        <div class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+          <h3 class="text-xl font-bold mb-2">Производство</h3>
+          <p class="text-gray-600">Изготовление конструкций на современных станках с высокой точностью.</p>
+        </div>
+        <!-- Блок 3 -->
+        <div class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+          <h3 class="text-xl font-bold mb-2">Монтаж</h3>
+          <p class="text-gray-600">Быстрая и качественная установка на объекте заказчика.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Строительный калькулятор -->
+  <section class="py-12 bg-white fade-in animate__animated animate__zoomIn" style="animation-delay: 0.5s;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto bg-blue-50 border border-blue-200 p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Строительный калькулятор</h2>
+
+        <div class="mb-4">
+          <label for="service-select" class="block text-sm font-medium text-gray-700 mb-1">Выберите услугу:</label>
+          <select id="service-select" class="w-full border border-gray-300 rounded px-3 py-2 focus:ring focus:ring-blue-200 transition">
+            <option value="ферма">Изготовление металлической фермы (до 10 метров)</option>
+            <option value="каркас">Установка каркаса одноэтажного здания (под ключ)</option>
+            <option value="колонны">Изготовление стальных колонн (за 1 м³)</option>
+            <option value="проектирование">Проектирование металлоконструкций</option>
+            <option value="монтаж">Монтаж лестниц и площадок обслуживания</option>
+          </select>
+        </div>
+
+        <div class="mb-4">
+          <label for="quantity-input" class="block text-sm font-medium text-gray-700 mb-1">Количество / размер:</label>
+          <input type="number" id="quantity-input" min="1" value="1" class="w-full border border-gray-300 rounded px-3 py-2 focus:ring focus:ring-blue-200 transition" />
+        </div>
+
+        <button id="calculate-btn"
+          class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded transition-all duration-300 transform hover:scale-105">
+          Рассчитать стоимость
+        </button>
+
+        <div id="result" class="mt-6 hidden">
+          <h3 class="font-semibold text-lg text-gray-800">Итоговая стоимость:</h3>
+          <p class="text-xl font-bold text-green-600 mt-2">
+            <span id="total-cost">0</span> руб.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Прайс-лист -->
+  <section class="py-16 bg-gray-100 fade-in animate__animated animate__fadeInUp" style="animation-delay: 0.9s;">
+    <div id="content-to-export" class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+      <header class="text-center mb-8">
+        <h1 class="text-3xl font-bold text-red-700">ООО Сибспецмаш</h1>
+        <p class="mt-2 text-sm text-gray-600">
+          Телефон: +7 (908) 649-60-90<br/>
+          Адрес: г. Ангарск, кв-л 106, д. 1, помещ. 65
+        </p>
+      </header>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Металлоконструкции от ООО «Сибспецмаш»</h2>
+        <p class="text-gray-700 leading-relaxed">
+          Компания «Сибспецмаш» специализируется на проектировании, изготовлении и монтаже металлоконструкций различного назначения.
+          Мы предлагаем широкий ассортимент продукции: каркасы зданий, фермы, колонны, лестницы, ограждения, площадки обслуживания и многое другое.
+        </p>
+      </section>
+
+      <!-- Таблица прайс-листа -->
+      <section class="overflow-x-auto">
+        <table class="w-full border-collapse border border-gray-300">
+          <thead>
+            <tr class="bg-gray-100">
+              <th class="py-3 px-4 border border-gray-300 text-left">№</th>
+              <th class="py-3 px-4 border border-gray-300 text-left">Наименование услуги</th>
+              <th class="py-3 px-4 border border-gray-300 text-right">Цена (руб.)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-300">
+            <tr>
+              <td class="py-4 px-4 border border-gray-300">1</td>
+              <td class="py-4 px-4 border border-gray-300">Изготовление металлической фермы (до 10 метров)</td>
+              <td class="py-4 px-4 border border-gray-300 text-right">85 000</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-4 border border-gray-300">2</td>
+              <td class="py-4 px-4 border border-gray-300">Установка каркаса одноэтажного здания (под ключ)</td>
+              <td class="py-4 px-4 border border-gray-300 text-right">250 000</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-4 border border-gray-300">3</td>
+              <td class="py-4 px-4 border border-gray-300">Изготовление стальных колонн (за 1 м³)</td>
+              <td class="py-4 px-4 border border-gray-300 text-right">18 000</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-4 border border-gray-300">4</td>
+              <td class="py-4 px-4 border border-gray-300">Проектирование металлоконструкций</td>
+              <td class="py-4 px-4 border border-gray-300 text-right">от 15 000</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-4 border border-gray-300">5</td>
+              <td class="py-4 px-4 border border-gray-300">Монтаж лестниц и площадок обслуживания</td>
+              <td class="py-4 px-4 border border-gray-300 text-right">35 000</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      
+  <!-- Результаты калькулятора -->
+<div id="calculator-result" class="mt-8 p-4 bg-blue-50 border-l-4 border-blue-500 text-blue-700 hidden">
+  <p class="font-semibold mb-2">Результаты калькулятора:</p>
+  <ul class="list-disc pl-5">
+    <li><strong>Выбранная услуга:</strong> <span id="selected-service-pdf"></span></li>
+    <li><strong>Количество / размер:</strong> <span id="quantity-value-pdf"></span></li>
+    <li><strong>Итоговая стоимость:</strong> <span id="total-cost-pdf">0</span> руб.</li>
+  </ul>
+</div>
+
+      <!-- Примечание -->
+      <section class="mt-6 text-sm text-gray-600">
+        <p>* Цены указаны без учёта НДС и доставки.</p>
+        <p class="mt-2">** Более точную стоимость уточняйте у менеджера.</p>
+      </section>
+    </div>
+
+    <!-- Кнопка просмотра в PDF -->
+    <div class="mt-10 text-center fade-in" style="animation-delay: 1.1s;">
+      <button id="export-btn"
+        class="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd"
+            d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L10 11.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+            clip-rule="evenodd" />
+          <path fill-rule="evenodd"
+            d="M10 3a1 1 0 011 1v7a1 1 0 1 0 2 0V4a1 1 0 011 1v7a1 1 0 01-1 1H9a1 1 0 01-1-1V4a1 1 0 011-1z"
+            clip-rule="evenodd" />
+        </svg>
+        Открыть всю страницу в PDF
+      </button>
+    </div>
+  </section>
+
+  <!-- Скрипты -->
+  <script>
+    // Калькулятор
+   document.getElementById('calculate-btn').addEventListener('click', () => {
+  const selectedServiceName = document.getElementById('service-select').value;
+  const quantity = parseFloat(document.getElementById('quantity-input').value);
+
+  let price = 0;
+  switch (selectedServiceName) {
+    case "ферма":
+      price = 85000;
+      break;
+    case "каркас":
+      price = 250000;
+      break;
+    case "колонны":
+      price = 18000;
+      break;
+    case "проектирование":
+      price = 15000;
+      break;
+    case "монтаж":
+      price = 35000;
+      break;
+  }
+
+  const totalCost = price * quantity;
+
+  // Отображение результата на странице
+  document.getElementById('total-cost').textContent = totalCost.toLocaleString();
+  document.getElementById('result').classList.remove('hidden');
+
+  // Сохраняем результат в блок под таблицей для PDF
+  document.getElementById('selected-service-pdf').textContent = selectedServiceName;
+  document.getElementById('quantity-value-pdf').textContent = quantity;
+  document.getElementById('total-cost-pdf').textContent = totalCost.toLocaleString();
+  document.getElementById('calculator-result').classList.remove('hidden');
+});
+
+    // Экспорт в PDF
+    document.getElementById('export-btn').addEventListener('click', async () => {
+      const content = document.getElementById('content-to-export');
+
+      const canvas = await html2canvas(content, { scale: 2 });
+      const imgData = canvas.toDataURL('image/png');
+
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF('p', 'mm', 'a4');
+
+      const pageWidth = doc.internal.pageSize.getWidth();
+      const pdfWidth = pageWidth - 20;
+      const imgProps = doc.getImageProperties(imgData);
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+      doc.addImage(imgData, 'PNG', 10, 10, pdfWidth, pdfHeight);
+      const pdfBlob = doc.output('blob');
+      const pdfUrl = URL.createObjectURL(pdfBlob);
+      window.open(pdfUrl, '_blank');
+    });
+  </script>
+
+</body>
+</html>
